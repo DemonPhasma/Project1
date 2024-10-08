@@ -1,60 +1,51 @@
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 
 
-double add(double a, double b) {
-    return a + b;
-}
+void findMinMax(int arr[], int size) {
+    int min = arr[0];
+    int max = arr[0];
+    int minIndex = 0;
+    int maxIndex = 0;
 
-double subtract(double a, double b) {
-    return a - b;
-}
 
-double multiply(double a, double b) {
-    return a * b;
-}
-
-double divide(double a, double b) {
-    if (b == 0) {
-        cout << "Ошибка: деление на ноль!" << endl;
-        return 0;
+    for (int i = 1; i < size; i++) {
+        if (arr[i] < min) {
+            min = arr[i];
+            minIndex = i;
+        }
+        if (arr[i] > max) {
+            max = arr[i];
+            maxIndex = i;
+        }
     }
-    return a / b;
+
+
+    cout << "Минимальный элемент: " << min << " (индекс: " << minIndex << ")" << endl;
+    cout << "Максимальный элемент: " << max << " (индекс: " << maxIndex << ")" << endl;
 }
 
 
 int main() {
     setlocale(LC_ALL, "ru");
-    double num1, num2;
-    char operation;
+    const int size = 10;
+    int arr[size];
 
-    cout << "Введите первое число: ";
-    cin >> num1;
-
-    cout << "Введите операцию (+, -, *, /): ";
-    cin >> operation;
-
-    cout << "Введите второе число: ";
-    cin >> num2;
-
-
-    switch (operation) {
-    case '+':
-        cout << "Результат: " << add(num1, num2) << endl;
-        break;
-    case '-':
-        cout << "Результат: " << subtract(num1, num2) << endl;
-        break;
-    case '*':
-        cout << "Результат: " << multiply(num1, num2) << endl;
-        break;
-    case '/':
-        cout << "Результат: " << divide(num1, num2) << endl;
-        break;
-    default:
-        cout << "Ошибка: неизвестная операция!" << endl;
-        break;
+    srand(time(0));
+    for (int i = 0; i < size; i++) {
+        arr[i] = rand() % 100;
     }
+
+    cout << "Массив: ";
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    findMinMax(arr, size);
 
     return 0;
 }
+    
