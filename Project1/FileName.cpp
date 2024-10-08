@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+
 double add(double a, double b) {
     return a + b;
 }
@@ -21,6 +22,7 @@ double divide(double a, double b) {
     return a / b;
 }
 
+
 int main() {
     setlocale(LC_ALL, "ru");
     double num1, num2;
@@ -34,6 +36,7 @@ int main() {
 
     cout << "¬ведите второе число: ";
     cin >> num2;
+
 
     switch (operation) {
     case '+':
